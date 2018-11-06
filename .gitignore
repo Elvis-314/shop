@@ -1,6 +1,9 @@
 # IDE
 .idea
 
+# Mac os
+*.DS_Store
+
 # Python
 venv*
 __pycache__
