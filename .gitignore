@@ -1,4 +1,7 @@
 # IDE
 .idea
 
-venv/
+# Python
+venv*
+__pycache__
+*.pyc
