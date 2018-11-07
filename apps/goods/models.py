@@ -22,7 +22,7 @@ class GoodsCategory(models.Model):
     # 设置目录级树的级别
     category_type = models.IntegerField(choices=CATEGORY_TYPE, verbose_name='类目级别', help_text='类目级别')
     # 设置models有一个指向自己的外键
-    parent_category = models.ForeignKey('self', on_delete=models.CASCADE, null=True, blank=True, verbose_name='父类目级别',
+    parent_category = models.ForeignKey('self', null=True, blank=True, verbose_name='父类目级别',
                                         help_text='父类目级别', related_name='sub_cat')
     is_tab = models.BooleanField(default=False, verbose_name='是否导航', help_text='是否导航')
     add_time = models.DateTimeField(default=datetime, verbose_name='添加时间')
@@ -39,7 +39,7 @@ class GoodsCategoryBrand(models.Model):
     '''
     某一大类下的宣传图标
     '''
-    category = models.ForeignKey(GoodsCategory, on_delete=models.CASCADE, related_name='brands', null=True, blank=True,
+    category = models.ForeignKey(GoodsCategory, related_name='brands', null=True, blank=True,
                                  verbose_name='商品类目')
     name = models.CharField(default='', max_length=30, verbose_name='品牌名', help_text='品牌名')
     desc = models.CharField(default='', max_length=200, verbose_name='品牌描述', help_text='品牌描述')
@@ -59,7 +59,7 @@ class Goods(models.Model):
     '''
     商品
     '''
-    category = models.ForeignKey(GoodsCategory, on_delete=models.CASCADE, verbose_name='商品类目')
+    category = models.ForeignKey(GoodsCategory,verbose_name='商品类目')
     goods_sn = models.CharField(max_length=50, default='', verbose_name='商品唯一货号')
     name = models.CharField(max_length=100, verbose_name='商品名')
     click_num = models.IntegerField(default=0, verbose_name='点击数')
@@ -93,7 +93,7 @@ class GoodsImage(models.Model):
     '''
     商品轮播图
     '''
-    goods = models.ForeignKey(Goods, on_delete=models.CASCADE, verbose_name='商品', related_name='images')
+    goods = models.ForeignKey(Goods, verbose_name='商品', related_name='images')
     image = models.ImageField(upload_to='', verbose_name='图片', null=True, blank=True)
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
 
@@ -109,7 +109,7 @@ class Banner(models.Model):
     '''
     首页轮播的商品图，为适配首页大图
     '''
-    goods = models.ForeignKey(Goods, on_delete=models.CASCADE, verbose_name='商品')
+    goods = models.ForeignKey(Goods, verbose_name='商品')
     image = models.ImageField(upload_to='banner', verbose_name='轮播图片')
     index = models.IntegerField(default=0, verbose_name='轮播顺序')
     add_time = models.DateTimeField(default=datetime.now, verbose_name='添加时间')
@@ -126,11 +126,11 @@ class IndexAd(models.Model):
     '''
     首页类别标签右边展示的七个商品广告
     '''
-    category = models.ForeignKey(GoodsCategory, on_delete=models.CASCADE, related_name='category', verbose_name='商品类目')
-    goods = models.ForeignKey(Goods, on_delete=models.CASCADE, related_name='goods', verbose_name='商品')
+    category = models.ForeignKey(GoodsCategory, related_name='category', verbose_name='商品类目')
+    goods = models.ForeignKey(Goods, related_name='goods')
 
     class Meta:
-        verbose_name = '首页广告'
+        verbose_name = '首页商品类别广告'
         verbose_name_plural = verbose_name
 
     def __str__(self):
