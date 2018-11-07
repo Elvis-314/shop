@@ -44,10 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users.apps.UsersConfig',
     'DjangoUeditor',
-    # 'users',
-    'goods',
-    'trade',
-    'user_operation',
+    'goods.apps.GoodsConfig',
+    'trade.apps.TradeConfig',
+    'user_operation.apps.UserOperationConfig',
 ]
 
 MIDDLEWARE = [
@@ -86,15 +85,17 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 # https://docs.djangoproject.com/en/2.1/ref/settings/#databases
 
 # 数据库连接配置
-DATABASE_CONFIG = {
-    'ENGINE': 'django.db.backends.mysql', # 数据库引擎
-    'NAME': 'online_store', # 使用的数据库库名
-    "USER": 'test', # 数据库用户名
-    "PASSWORD": '123456', # 数据库密码
-    "HOST": '127.0.0.1', # 数据库地址
-    'PORT': 3306, # 数据库端口，MySQL为3306
-    'OPTIONS': {
-        "init_command": "SET default_storage_engine=INNODB;",
+DATABASES = {
+    'default':{
+        'ENGINE': 'django.db.backends.mysql', # 数据库引擎
+        'NAME': 'online_store', # 使用的数据库库名
+        'USER': 'test', # 数据库用户名
+        'PASSWORD': '123456', # 数据库密码
+        'HOST': '127.0.0.1', # 数据库地址
+        'PORT': 3306, # 数据库端口，MySQL为3306
+        'OPTIONS': {
+            "init_command": "SET default_storage_engine=INNODB;",
+        }
     }
 }
 
