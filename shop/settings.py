@@ -64,8 +64,7 @@ ROOT_URLCONF = 'shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')]
-        ,
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -86,13 +85,13 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 
 # 数据库连接配置
 DATABASES = {
-    'default':{
-        'ENGINE': 'django.db.backends.mysql', # 数据库引擎
-        'NAME': 'online_store', # 使用的数据库库名
-        'USER': 'test', # 数据库用户名
-        'PASSWORD': '123456', # 数据库密码
-        'HOST': '127.0.0.1', # 数据库地址
-        'PORT': 3306, # 数据库端口，MySQL为3306
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',  # 数据库引擎
+        'NAME': 'online_store',  # 使用的数据库库名
+        'USER': 'test',  # 数据库用户名
+        'PASSWORD': '123456',  # 数据库密码
+        'HOST': '127.0.0.1',  # 数据库地址
+        'PORT': 3306,  # 数据库端口，MySQL为3306
         'OPTIONS': {
             "init_command": "SET default_storage_engine=INNODB;",
         }
