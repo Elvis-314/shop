@@ -8,5 +8,9 @@
 venv*
 __pycache__
 *.pyc
-*.*.pyc
+
+apps/goods/migrations/*
+apps/trade/migrations/*
+apps/user_operation/migrations/*
+apps/users/migrations/*
 
