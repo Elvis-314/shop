@@ -19,7 +19,7 @@ class OrderInfoAdmin(object):
         extra = 1
         style = 'tab'
 
-    inlines = [OrderGoodsInline,]
+    inlines = [OrderGoodsInline, ]
 
 
 xadmin.site.register(ShoppingCart, ShoppingCartAdmin)

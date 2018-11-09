@@ -1,3 +1,3 @@
 [flake8]
 ignore = E501 W504 F401
-exclude = settings venv extra_apps/DjangoUeditor/
+exclude = settings venv extra_apps/DjangoUeditor/ extra_apps/xadmin/ db_tools/
