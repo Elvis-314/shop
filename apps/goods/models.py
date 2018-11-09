@@ -73,7 +73,7 @@ class Goods(models.Model):
                               height=300, filePath='goods/files/', default='')
     ship_free = models.BooleanField(default=True, verbose_name='是否承担运费')
     # 首页中展示的商品封面图
-    goods_front_image = models.ImageField(upload_to='goods/image/', null=True, blank=True,
+    goods_front_image = models.ImageField(upload_to='goods/images/', null=True, blank=True,
                                           verbose_name='封面图')
     # 首页中新品展示
     is_new = models.BooleanField(default=False, verbose_name='是否新品')
@@ -127,7 +127,7 @@ class IndexAd(models.Model):
     首页类别标签右边展示的七个商品广告
     '''
     category = models.ForeignKey(GoodsCategory, related_name='category', verbose_name='商品类目')
-    goods = models.ForeignKey(Goods, related_name='goods')
+    goods = models.ForeignKey(Goods, related_name='goods', verbose_name='商品')
 
     class Meta:
         verbose_name = '首页商品类别广告'
