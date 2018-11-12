@@ -3,16 +3,17 @@ from .serializers import GoodsSerializer
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
+from rest_framework import mixins
+from rest_framework import generics
+
 from .models import Goods
 
 # Create your views here.
 
 
-class GoodsListView(APIView):
+class GoodsListView(generics.ListAPIView):
     """
-    List all goods.
+    商品列表页
     """
-    def get(self, request, format=None):
-        goods = Goods.objects.all()[:10]
-        goods_serializer = GoodsSerializer(goods, many=True)
-        return Response(goods_serializer.data)
+    queryset = Goods.objects.all()[:10]
+    serializer_class = GoodsSerializer
