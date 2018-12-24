@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'user_operation.apps.UserOperationConfig',
     'xadmin',
     'crispy_forms',
+    'django_filters',
     'rest_framework',
 ]
 
