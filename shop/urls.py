@@ -23,13 +23,14 @@ from django.views.static import serve
 # from goods.views import GoodsListView
 
 from rest_framework.documentation import include_docs_urls
+from rest_framework.routers import DefaultRouter
 
 from goods.views import GoodsListViewSet
 
 
-goods_list = GoodsListViewSet.as_view({
-    'get': 'list',
-})
+router = DefaultRouter()
+router.register(r'goods', GoodsListViewSet)
+
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
@@ -41,8 +42,7 @@ urlpatterns = [
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
 
     # 商品列表页
-    # url(r'goods/$', GoodsListView.as_view(), name='goods-list'),
-    url(r'goods/$', goods_list, name='goods-list'),
+    url(r'^', include(router.urls)),
 
     url(r'docs/', include_docs_urls(title='商店平台')),
 
