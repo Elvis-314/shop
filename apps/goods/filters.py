@@ -13,6 +13,7 @@ class GoodsFilter(django_filters.rest_framework.FilterSet):
     price_max = django_filters.NumberFilter(name="shop_price", lookup_expr='lte')
     # icontains 中的i，表示忽略大小写,不带lookup_expr则要求全匹配
     # name = django_filters.CharFilter(name="name", lookup_expr='icontains')
+
     class Meta:
         model = Goods
         fields = ['price_min', 'price_max']
