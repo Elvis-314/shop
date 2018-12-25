@@ -4,6 +4,8 @@
 # Mac os
 *.DS_Store
 
+*.rdb
+
 # Python
 venv*
 __pycache__
