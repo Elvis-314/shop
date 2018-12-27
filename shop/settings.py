@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'rest_framework',
     # 解决跨域问题
     'corsheaders',
+    'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
@@ -152,3 +153,11 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # REST_FRAMEWORK = {
 #     'PAGE_SIZE': 10,
 # }
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    ),
+}
