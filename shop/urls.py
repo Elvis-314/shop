@@ -50,7 +50,7 @@ urlpatterns = [
     url(r'^api-token-auth/', views.obtain_auth_token),
 
     # jwt的认证接口
-    url(r'^jwt_auth/', obtain_jwt_token),
+    url(r'^login/', obtain_jwt_token),
 
     # 富文本相关url
     # path('ueditor/', include('DjangoUeditor.urls')),

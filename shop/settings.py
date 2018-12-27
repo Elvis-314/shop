@@ -141,6 +141,9 @@ USE_L10N = True
 
 USE_TZ = False
 
+AUTHENTICATION_BACKENDS = (
+    'users.views.CustomBackend',
+)
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -162,4 +165,11 @@ REST_FRAMEWORK = {
         # 将token做验证
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
+}
+
+import datetime
+# 设置过期时间
+JWT_AUTH = {
+    'JWT_EXPIRATION_DELTA': datetime.timedelta(days=7),
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
 }
