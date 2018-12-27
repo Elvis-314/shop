@@ -27,6 +27,8 @@ from rest_framework.routers import DefaultRouter
 
 from goods.views import GoodsListViewSet, CategoryViewset
 
+from rest_framework_jwt.views import obtain_jwt_token
+
 
 router = DefaultRouter()
 
@@ -39,8 +41,13 @@ router.register(r'categorys', CategoryViewset, base_name="categorys")
 urlpatterns = [
     # path('admin/', admin.site.urls),
     url(r'^xadmin/', xadmin.site.urls),
-    # drf
+
+    # drf自带的token认证模式
     url(r'^api-auth/', include('rest_framework.urls')),
+
+    # jwt的认证接口
+    url(r'^jwt_auth/', obtain_jwt_token),
+
     # 富文本相关url
     # path('ueditor/', include('DjangoUeditor.urls')),
     url(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT}),
