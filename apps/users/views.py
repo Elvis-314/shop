@@ -8,7 +8,7 @@ from rest_framework.mixins import CreateModelMixin
 from rest_framework import viewsets
 from random import choice
 
-from .serializers import SmsSerializer
+from .serializers import SmsSerializer, UserRegSerializer
 from rest_framework.response import Response
 from rest_framework import status
 from shop.settings import APIKEY
@@ -73,3 +73,9 @@ class SmsCodeViewset(CreateModelMixin, viewsets.GenericViewSet):
             return Response({
                 "mobile": sms_status["msg"]
             }, status=status.HTTP_201_CREATED)
+
+class UserViewset(CreateModelMixin, viewsets.GenericViewSet):
+    """
+    用户
+    """
+    serializer_class = UserRegSerializer

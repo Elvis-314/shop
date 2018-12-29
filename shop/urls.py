@@ -27,7 +27,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 
 from goods.views import GoodsListViewSet, CategoryViewset
-from users.views import SmsCodeViewset
+from users.views import SmsCodeViewset, UserViewset
 
 from rest_framework_jwt.views import obtain_jwt_token
 
@@ -42,6 +42,9 @@ router.register(r'code', SmsCodeViewset, base_name="code")
 
 # 配置Category的url
 router.register(r'categorys', CategoryViewset, base_name="categorys")
+
+# 用户
+router.register(r'users', UserViewset, base_name="users")
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
