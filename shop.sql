@@ -875,7 +875,7 @@ CREATE TABLE `trade_orderinfo` (
   `pay_time` datetime(6) DEFAULT NULL,
   `address` varchar(100) NOT NULL,
   `signer_name` varchar(20) NOT NULL,
-  `singer_mobile` varchar(11) NOT NULL,
+  `signer_mobile` varchar(11) NOT NULL,
   `add_time` datetime(6) NOT NULL,
   `user_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
