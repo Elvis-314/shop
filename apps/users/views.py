@@ -51,7 +51,6 @@ class SmsCodeViewset(CreateModelMixin, viewsets.GenericViewSet):
 
         return "".join(random_str)
 
-
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -73,6 +72,7 @@ class SmsCodeViewset(CreateModelMixin, viewsets.GenericViewSet):
             return Response({
                 "mobile": sms_status["msg"]
             }, status=status.HTTP_201_CREATED)
+
 
 class UserViewset(CreateModelMixin, viewsets.GenericViewSet):
     """

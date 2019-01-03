@@ -87,7 +87,6 @@ class UserRegSerializer(serializers.ModelSerializer):
         del attrs["code"]
         return attrs
 
-
     class Meta:
         model = User
         fields = ("username", "code", "mobile", "password")

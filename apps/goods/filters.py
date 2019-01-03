@@ -17,7 +17,6 @@ class GoodsFilter(django_filters.rest_framework.FilterSet):
     # name = django_filters.CharFilter(name="name", lookup_expr='icontains')
     top_category = django_filters.NumberFilter(method='top_category_filter')
 
-
     # 查找第一分类下的商品
     def top_category_filter(self, queryset, name, value):
         return queryset.filter(Q(category_id=value) | Q(category__parent_category_id=value) | Q(category__parent_category__parent_category_id=value))
