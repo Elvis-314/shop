@@ -5,12 +5,13 @@ from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from rest_framework.authentication import SessionAuthentication
 
 from .models import UserFav
-from .serializers import UserFavSerializer
+from .serializers import UserFavSerializer, UserFavDetailSerializer
 from utils.permissions import IsOwnerOrReadOnly
 # Create your views here.
 
 
-class UserFavViewset(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.DestroyModelMixin, viewsets.GenericViewSet):
+class UserFavViewset(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.RetrieveModelMixin,
+                     mixins.DestroyModelMixin, viewsets.GenericViewSet):
     """
     用户收藏功能
     """
@@ -18,6 +19,15 @@ class UserFavViewset(mixins.CreateModelMixin, mixins.ListModelMixin, mixins.Dest
     permission_classes = (IsAuthenticated, IsOwnerOrReadOnly)
     serializer_class = UserFavSerializer
     authentication_classes = (JSONWebTokenAuthentication, SessionAuthentication)
+    lookup_field = "goods_id"
 
     def get_queryset(self):
         return UserFav.objects.filter(user=self.request.user)
+
+    def get_serializer_class(self):
+        if self.action == "list":
+            return UserFavDetailSerializer
+        elif self.action == "create":
+            return UserFavSerializer
+
+        return UserFavSerializer
