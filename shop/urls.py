@@ -26,7 +26,7 @@ from rest_framework.documentation import include_docs_urls
 from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 
-from goods.views import GoodsListViewSet, CategoryViewset
+from goods.views import GoodsListViewSet, CategoryViewset, HotSearchsViewset
 from users.views import SmsCodeViewset, UserViewset
 from user_operation.views import UserFavViewset
 
@@ -46,6 +46,9 @@ router.register(r'categorys', CategoryViewset, base_name="categorys")
 
 # 用户
 router.register(r'users', UserViewset, base_name="users")
+
+# 热搜
+router.register(r'hotsearchs', HotSearchsViewset, base_name="hotsearchs")
 
 # 收藏
 router.register(r'userfavs', UserFavViewset, base_name="userfavs")
