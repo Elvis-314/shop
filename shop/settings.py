@@ -163,8 +163,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
         # 'rest_framework.authentication.TokenAuthentication',
-        # 将token做验证
-        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        # 将token做验证(全局的验证)
+        # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
 }
 
