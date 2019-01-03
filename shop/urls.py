@@ -28,7 +28,7 @@ from rest_framework.authtoken import views
 
 from goods.views import GoodsListViewSet, CategoryViewset, HotSearchsViewset
 from users.views import SmsCodeViewset, UserViewset
-from user_operation.views import UserFavViewset
+from user_operation.views import UserFavViewset, LeavingMessageViewset
 
 from rest_framework_jwt.views import obtain_jwt_token
 
@@ -52,6 +52,9 @@ router.register(r'hotsearchs', HotSearchsViewset, base_name="hotsearchs")
 
 # 收藏
 router.register(r'userfavs', UserFavViewset, base_name="userfavs")
+
+# 留言
+router.register(r'messages', LeavingMessageViewset, base_name='messages')
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
