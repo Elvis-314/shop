@@ -121,4 +121,3 @@ class UserViewset(CreateModelMixin, mixins.UpdateModelMixin, mixins.RetrieveMode
 
     def perform_create(self, serializer):
         return serializer.save()
-
