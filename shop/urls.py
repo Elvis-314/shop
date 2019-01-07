@@ -29,7 +29,7 @@ from rest_framework.authtoken import views
 from goods.views import GoodsListViewSet, CategoryViewset, HotSearchsViewset
 from users.views import SmsCodeViewset, UserViewset
 from user_operation.views import UserFavViewset, LeavingMessageViewset, AddressViewset
-from trade.views import ShoppingCartViewset, OrderViewset
+from trade.views import ShoppingCartViewset, OrderViewset, AlipayViewset
 
 from rest_framework_jwt.views import obtain_jwt_token
 
@@ -87,5 +87,7 @@ urlpatterns = [
     url(r'^', include(router.urls)),
 
     url(r'docs/', include_docs_urls(title='商店平台')),
+
+    url(r'^alipay/return/', AlipayViewset.as_view(), name="alipay"),
 
 ]
