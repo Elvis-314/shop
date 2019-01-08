@@ -12,6 +12,7 @@ from rest_framework import viewsets
 from .models import Goods, GoodsCategory, HotSearchWords, Banner
 from .filters import GoodsFilter
 from .serializers import GoodsSerializer, CategorySerializer, HotWordsSerializer, BannerSerializer
+from .serializers import IndexCategorySerializer
 
 # Create your views here.
 
@@ -61,3 +62,11 @@ class BannerViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     queryset = Banner.objects.all().order_by("index")
     serializer_class = BannerSerializer
+
+
+class IndexCategoryViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    首页商品分类数据
+    """
+    queryset = GoodsCategory.objects.filter(is_tab=True, )
+    serializer_class = IndexCategorySerializer

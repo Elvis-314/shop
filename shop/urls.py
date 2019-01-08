@@ -27,6 +27,7 @@ from rest_framework.routers import DefaultRouter
 from rest_framework.authtoken import views
 
 from goods.views import GoodsListViewSet, CategoryViewset, HotSearchsViewset, BannerViewset
+from goods.views import IndexCategoryViewset
 from users.views import SmsCodeViewset, UserViewset
 from user_operation.views import UserFavViewset, LeavingMessageViewset, AddressViewset
 from trade.views import ShoppingCartViewset, OrderViewset, AlipayViewset
@@ -68,6 +69,9 @@ router.register(r'orders', OrderViewset, base_name='orders')
 
 # 轮播图
 router.register(r'banners', BannerViewset, base_name='banners')
+
+# 首页商品系列数据
+router.register(r'indexgoods', IndexCategoryViewset, base_name='indexgoods')
 
 urlpatterns = [
     # path('admin/', admin.site.urls),
