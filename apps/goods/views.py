@@ -9,7 +9,7 @@ from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from rest_framework_extensions.cache.mixins import CacheResponseMixin
-from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
+# from rest_framework.throttling import UserRateThrottle, AnonRateThrottle
 
 from .models import Goods, GoodsCategory, HotSearchWords, Banner
 from .filters import GoodsFilter
@@ -32,7 +32,7 @@ class GoodsListViewSet(CacheResponseMixin, mixins.ListModelMixin, mixins.Retriev
     """
     商品列表页，分页，过滤，搜索，排序
     """
-    throttle_classes = (UserRateThrottle, AnonRateThrottle)
+    # throttle_classes = (UserRateThrottle, AnonRateThrottle)
     queryset = Goods.objects.all()
     serializer_class = GoodsSerializer
     pagination_class = GoodsPagination
