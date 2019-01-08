@@ -9,9 +9,9 @@ from rest_framework.pagination import PageNumberPagination
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 
-from .models import Goods, GoodsCategory, HotSearchWords
+from .models import Goods, GoodsCategory, HotSearchWords, Banner
 from .filters import GoodsFilter
-from .serializers import GoodsSerializer, CategorySerializer, HotWordsSerializer
+from .serializers import GoodsSerializer, CategorySerializer, HotWordsSerializer, BannerSerializer
 
 # Create your views here.
 
@@ -53,3 +53,11 @@ class HotSearchsViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     queryset = HotSearchWords.objects.all().order_by("-index")
     serializer_class = HotWordsSerializer
+
+
+class BannerViewset(mixins.ListModelMixin, viewsets.GenericViewSet):
+    """
+    获取轮播图列表
+    """
+    queryset = Banner.objects.all().order_by("index")
+    serializer_class = BannerSerializer
