@@ -166,6 +166,16 @@ REST_FRAMEWORK = {
         # 将token做验证(全局的验证)
         # 'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
     ),
+    # drf自带的限速，防止爬虫攻击，请求限速返回429状态, 规则包含匿名用户Anon，登录用户User
+    # 'DEFAULT_THROTTLE_CLASSES': (
+    #     'rest_framework.throttling.AnonRateThrottle',
+    #     'rest_framework.throttling.UserRateThrottle'
+    # ),
+    # 'DEFAULT_THROTTLE_RATES': {
+    #   匿名用户
+    #     'anon': '2/minute',
+    #     'user': '3/minute'
+    # }
 }
 
 # 设置过期时间
