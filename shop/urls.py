@@ -19,6 +19,7 @@ from django.conf.urls import url, include
 import xadmin
 from shop.settings import MEDIA_ROOT
 from django.views.static import serve
+from django.views.generic import TemplateView
 
 # from goods.views import GoodsListView
 
@@ -83,8 +84,11 @@ urlpatterns = [
     # 获取token的url
     url(r'^api-token-auth/', views.obtain_auth_token),
 
+    # 首页
+    url(r'^index/', TemplateView.as_view(template_name="index.html"), name="index"),
+
     # jwt的认证接口
-    url(r'^login/', obtain_jwt_token),
+    url(r'^login/$', obtain_jwt_token),
 
     # 富文本相关url
     # path('ueditor/', include('DjangoUeditor.urls')),
@@ -97,4 +101,6 @@ urlpatterns = [
 
     url(r'^alipay/return/', AlipayViewset.as_view(), name="alipay"),
 
+    # 第三方登录url
+    url('', include('social_django.urls', namespace='social')),
 ]
